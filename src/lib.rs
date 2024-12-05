@@ -209,7 +209,7 @@ impl DeviceHandle {
 					type_: (*option_descriptor).type_,
 					unit: (*option_descriptor).unit,
 					size: (*option_descriptor).size as u32,
-					cap: OptionCapability::from_bits_unchecked((*option_descriptor).cap as u32),
+					cap: OptionCapability::from_bits_truncate((*option_descriptor).cap as u32),
 					constraint,
 				});
 			}
@@ -405,6 +405,7 @@ pub struct DeviceOption {
 }
 
 bitflags! {
+    #[derive(Debug)]
 	#[repr(transparent)]
 	pub struct OptionCapability: u32 {
 		const SOFT_SELECT = sys::CAP_SOFT_SELECT;

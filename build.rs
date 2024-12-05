@@ -4,7 +4,7 @@ use std::path::PathBuf;
 
 fn main() {
 	let bindings = bindgen::builder()
-		.header("/usr/include/sane/sane.h")
+		.header("sane/sane.h")
 		.rustified_enum("SANE_Unit")
 		.rustified_enum("SANE_Value_Type")
 		.rustified_enum("SANE_Constraint_Type")
